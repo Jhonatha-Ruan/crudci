@@ -49,8 +49,8 @@
                     </div>		
 					
 					<div class="col-md-6">
-							<button type="submit" class="btn btn-success btn-xs"><i class="fas fa-check"></i> Save</button>
-							<a href="<?= base_url()?>dashboard" class="btn btn-danger btn-xs"><i class="fas fa-times"></i> Cancel</a>
+							<a href="<?= base_url()?>dashboard" class="btn btn-danger btn-xs"><i class="fas fa-times"></i> Cancelar</a>
+							<button type="submit" class="btn btn-success btn-xs"><i class="fas fa-check"></i> Salvar</button>
 						</div>
 					</div>
 				</form>

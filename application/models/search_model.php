@@ -37,6 +37,17 @@ class Search_model extends CI_Model {
         return $this->db->get("tb_boletins")->result_array();
     }
 
+    public function searchUsers($busca) 
+    {
+        if(empty($busca)) {
+            return array();
+        }
+
+        $busca = $this->input->post("search_users");
+        $this->db->like("name", $busca);
+        return $this->db->get("tb_users")->result_array();
+    }
+
 
 }
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24-Fev-2023 às 20:28
+-- Tempo de geração: 07-Mar-2023 às 03:40
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -40,12 +40,13 @@ CREATE TABLE `tb_boletins` (
 --
 
 INSERT INTO `tb_boletins` (`id`, `titulo`, `texto`, `tipo_aviso`, `nivel_permissao`) VALUES
-(2, 'Testando', 'oi', 'Urgente', 'Geral'),
 (4, 'Boletim de Avisos', 'Testes', 'Urgente', 'Geral'),
-(5, 'tes direto', 'eee', 'Urgente', 'Diretoria'),
-(6, '2 test', 'eee', 'Urgente', 'Diretoria'),
+(5, 'tes direto', 'eee asd', 'Urgente', 'Diretoria'),
+(6, '2 test', 'eee', 'Urgente', 'Geral'),
 (8, 'boletim de Funcionarios 1', 'test', 'Noticias', 'Funcionarios'),
-(9, 'boletim de Funcionarios 2', 'Test', 'Urgente', 'Funcionarios');
+(9, 'boletim de Funcionarios 22', 'Test tando', 'Urgente', 'Funcionarios'),
+(15, 'Boletim Diretoria', 'Test', 'Urgente', 'Diretoria'),
+(16, 'test', 's', 'Urgente', 'Geral');
 
 -- --------------------------------------------------------
 
@@ -58,15 +59,17 @@ CREATE TABLE `tb_users` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `country` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `country` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `role` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Extraindo dados da tabela `tb_users`
 --
 
-INSERT INTO `tb_users` (`id`, `name`, `email`, `password`, `country`) VALUES
-(1, 'Jhonatha', 'jhonatha@gmail', '202cb962ac59075b964b07152d234b70', 'Brasil');
+INSERT INTO `tb_users` (`id`, `name`, `email`, `password`, `country`, `role`) VALUES
+(1, 'Jhonatha', 'jhonatha@gmail', '202cb962ac59075b964b07152d234b70', 'Brasil', 'Diretoria'),
+(2, 'Admin', 'adm@teste.com.br', '202cb962ac59075b964b07152d234b70', 'Alemanha', 'Funcionarios');
 
 --
 -- Índices para tabelas despejadas
@@ -92,13 +95,13 @@ ALTER TABLE `tb_users`
 -- AUTO_INCREMENT de tabela `tb_boletins`
 --
 ALTER TABLE `tb_boletins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de tabela `tb_users`
 --
 ALTER TABLE `tb_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

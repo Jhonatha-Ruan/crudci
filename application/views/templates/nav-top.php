@@ -29,16 +29,22 @@
               Geral
             </a>
           </li>
-					<li class="nav-item">
-            <a class="nav-link" href="<?=base_url()?>dashboard/diretoria">
+          <li class="nav-item">
+            <a class="nav-link" href="<?=base_url()?>funcionarios">
+              <span data-feather="shopping-cart"></span>
+              Funcionários
+            </a>
+					</li>         
+          <li class="nav-item">
+            <a class="nav-link" href="<?=base_url()?>diretoria">
               <span data-feather="file"></span>
               Diretoria
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?=base_url()?>dashboard/funcionarios">
+            <a class="nav-link" href="<?=base_url()?>users">
               <span data-feather="shopping-cart"></span>
-              Funcionários
+              Usuários
             </a>
 					</li>
         </ul>

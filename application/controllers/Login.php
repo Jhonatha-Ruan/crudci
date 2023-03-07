@@ -20,6 +20,7 @@ class Login extends CI_Controller {
 			$this->session->set_userdata("logged_user", $user);
 			redirect("dashboard");
 		} else {
+			$this->session->set_flashdata("errorSenha", "Email ou senha incorretos");
 			redirect("login");
 		}
 		

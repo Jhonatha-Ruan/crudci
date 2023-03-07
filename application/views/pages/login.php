@@ -12,10 +12,8 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/sign-in/">
 
     <!-- Bootstrap core CSS -->
-<link href="https://getbootstrap.com/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<meta name="theme-color" content="#563d7c">
-
-
+    <link href="https://getbootstrap.com/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta name="theme-color" content="#563d7c">
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -36,9 +34,20 @@
     <link href="https://getbootstrap.com/docs/4.4/examples/sign-in/signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
+    
     <form class="form-signin" method="post" action="<?=base_url()?>login/store">
   <img class="mb-4" src="https://cdn-icons-png.flaticon.com/512/579/579703.png" alt="" width="72" height="72">
   <h1 class="h3 mb-3 font-weight-normal">Entrar</h1>
+    <?php if ($this->session->flashdata('error')) : ?>
+      <div class="alert alert-danger">
+          <?php echo $this->session->flashdata('error'); ?>
+      </div>
+    <?php endif; ?>
+    <?php if ($this->session->flashdata('errorSenha')) : ?>
+		<div class="alert alert-danger">
+			<?php echo $this->session->flashdata('errorSenha'); ?>
+		</div>
+	<?php endif; ?>
   <label for="inputEmail" class="sr-only">Email address</label>
   <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
   <label for="inputPassword" class="sr-only">Password</label>

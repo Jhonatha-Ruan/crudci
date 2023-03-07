@@ -8,6 +8,8 @@ class Dashboard extends CI_Controller {
 		parent::__construct();
 		permission();
 		$this->load->model("boletins_model");
+		$this->load->model("search_model");
+		//ARRUMAR OS MODAL EM TODOS E TIRAR O RESULT PARA A MESMA PAGINA
 	}
 
 	public function index()
@@ -22,18 +24,18 @@ class Dashboard extends CI_Controller {
 		$this->load->view('templates/js', $data);
 	}
 
-	public function new() 
-	{
-		$data["title"] = "Boletim - CodeIgniter";
+	// public function new() 
+	// {
+	// 	$data["title"] = "Boletim - CodeIgniter";
 
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/nav-top', $data);
-		$this->load->view('pages/form-boletim', $data);
-		$this->load->view('templates/footer', $data);
-		$this->load->view('templates/js', $data);
-	}
+	// 	$this->load->view('templates/header', $data);
+	// 	$this->load->view('templates/nav-top', $data);
+	// 	$this->load->view('pages/form-boletim', $data);
+	// 	$this->load->view('templates/footer', $data);
+	// 	$this->load->view('templates/js', $data);
+	// }
 
-	public function store() 
+	public function novoBoletim() 
 	{
 		$boletim = $_POST;	
 		$this->boletins_model->store($boletim);
@@ -65,18 +67,6 @@ class Dashboard extends CI_Controller {
 		redirect("dashboard");
 	}
 
-	public function diretoria()
-	{
-		$dados["boletim_diretoria"]  = $this->boletins_model->getDiretoria();
-		$dados["title"] = "Diretoria - CodeIgniter";
-
-		$this->load->view('templates/header', $dados);
-		$this->load->view('templates/nav-top', $dados);
-		$this->load->view('pages/diretoria', $dados);
-		$this->load->view('templates/footer', $dados);
-		$this->load->view('templates/js', $dados);
-	}
-
 	public function funcionarios()
 	{
 		$dados["boletim_funcionarios"]  = $this->boletins_model->getFuncionarios();
@@ -89,40 +79,10 @@ class Dashboard extends CI_Controller {
 		$this->load->view('templates/js', $dados);
 	}
 
-	//Search
 	public function search() 
 	{
-		$this->load->model("search_model");
 		$data["title"] = "Resultado da Pesquisa por *". $_POST["busca"] ."*";
 		$data["result"] = $this->search_model->search($_POST);
-
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/nav-top', $data);
-		$this->load->view('pages/result', $data);
-		$this->load->view('templates/footer', $data);
-		$this->load->view('templates/js', $data);
-	}
-
-	//SearchDiretoria
-	public function searchDiretoria() 
-	{
-		$this->load->model("search_model");
-		$data["title"] = "Resultado da Pesquisa por *". $_POST["busca_diretoria"] ."*";
-		$data["result"] = $this->search_model->searchDiretoria($_POST);
-
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/nav-top', $data);
-		$this->load->view('pages/result', $data);
-		$this->load->view('templates/footer', $data);
-		$this->load->view('templates/js', $data);
-	}
-
-	//SearchDiretoria
-	public function searchFuncionarios() 
-	{
-		$this->load->model("search_model");
-		$data["title"] = "Resultado da Pesquisa por *". $_POST["busca_funcionarios"] ."*";
-		$data["result"] = $this->search_model->searchFuncionarios($_POST);
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/nav-top', $data);
